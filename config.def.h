@@ -57,10 +57,14 @@ static const Layout layouts[] = {
 
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  = { "uxterm", NULL };
+static const char *termcmd[]  = { "urxvtc", "-fg" ,"gray", "-bg", "black", "+sb", NULL };
+static const char *progcmd[] = { "twmenu_run", "/home/timow/.dmenu_programs", NULL };
+static const char *doccmd[] = { "twmenu_run", "/home/timow/.dmenu_docs", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+	{ MODKEY,                       XK_o,      spawn,          {.v = progcmd } },
+	{ MODKEY,                       XK_F1,     spawn,          {.v = doccmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
